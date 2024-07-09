@@ -1,3 +1,4 @@
+import logging
 from urllib3 import Retry
 
 import requests
@@ -31,14 +32,16 @@ def get_response(url: str) -> requests.Response | None:
     try:
         with get_requests_session() as session:
             return session.get(url=url)
-    except exceptions.RequestException:
-        pass
+    except exceptions.RequestException as e:
+        logging.info(e)
 
 
 def get_cbr_rate() -> float | None:
     url = settings.API_URL
     if response := get_response(url=url):
         return retrieve_rate(response.content)
+
+    logging.error("Could not get response from an external API")
 
 
 def retrieve_rate(xml_content: bytes) -> float | None:
@@ -53,5 +56,5 @@ def retrieve_rate(xml_content: bytes) -> float | None:
         rate = text_value.replace(",", ".")
 
         return float(rate)
-    except Exception:
-        pass
+    except Exception as e:
+        logging.error(e)

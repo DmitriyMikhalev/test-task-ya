@@ -111,8 +111,22 @@ RECENT_REQUESTS_MAX_COUNT = int(cnt) if (cnt := os.getenv("RECENT_REQUESTS_MAX_C
 
 TIMEOUT_SECONDS = 10
 
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": os.getenv("LOGGING_LEVEL"),
+    },
+}
+
 # SETTINGS FOR API
 
 API_USD_CODE = "R01235"
 
-API_URL = "https://cbr.ru/scripts/XML_daily.asp"
+API_URL = "https://cdbr.ru/scripts/XML_daily.asp"
