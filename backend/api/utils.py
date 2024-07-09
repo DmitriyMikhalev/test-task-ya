@@ -1,9 +1,9 @@
+from urllib3 import Retry
+
 import requests
 from requests.adapters import HTTPAdapter
 from requests import exceptions
-from urllib3 import Retry
 from django.conf import settings
-
 from lxml import etree
 
 

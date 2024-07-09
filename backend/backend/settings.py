@@ -13,7 +13,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = int(debug) if (debug := os.getenv("DEBUG")) and debug.isdigit() else debug
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", default="*").split()
 
 DEFAULT_DJANGO_APPS = [
     "django.contrib.admin",
@@ -97,11 +97,19 @@ USE_I18N = True
 
 USE_TZ = True
 
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
 STATIC_URL = "static/"
+
+MEDIA_ROOT = BASE_DIR / "media"
+
+MEDIA_URL = "/media/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 RECENT_REQUESTS_MAX_COUNT = int(cnt) if (cnt := os.getenv("RECENT_REQUESTS_MAX_COUNT")) and debug.isdigit() else 10
+
+TIMEOUT_SECONDS = 10
 
 # SETTINGS FOR API
 
