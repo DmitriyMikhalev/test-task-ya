@@ -27,7 +27,8 @@ DEFAULT_DJANGO_APPS = [
 PROJECT_APPS = [
     "django_extensions",
     "rest_framework",
-    "api.apps.ApiConfig"
+    "api.apps.ApiConfig",
+    "drf_yasg",
 ]
 
 INSTALLED_APPS = DEFAULT_DJANGO_APPS + PROJECT_APPS
