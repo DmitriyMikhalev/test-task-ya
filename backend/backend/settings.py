@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env_path = BASE_DIR.parent / "infra" / ".env"
-print(f'{env_path=}')
 
 load_dotenv(dotenv_path=env_path)
 
@@ -27,6 +26,7 @@ DEFAULT_DJANGO_APPS = [
 
 PROJECT_APPS = [
     "django_extensions",
+    "rest_framework",
     "api.apps.ApiConfig"
 ]
 
@@ -99,3 +99,11 @@ USE_TZ = True
 STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+RECENT_REQUESTS_MAX_COUNT = int(cnt) if (cnt := os.getenv("RECENT_REQUESTS_MAX_COUNT")) and debug.isdigit() else 10
+
+# SETTINGS FOR API
+
+API_USD_CODE = "R01235"
+
+API_URL = "https://cbr.ru/scripts/XML_daily.asp"
