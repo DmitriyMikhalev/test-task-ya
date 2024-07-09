@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env_path = BASE_DIR.parent / "infra" / ".env"
+env_path = BASE_DIR.parent / ".env"
 
 load_dotenv(dotenv_path=env_path)
 
@@ -129,4 +129,4 @@ LOGGING = {
 
 API_USD_CODE = "R01235"
 
-API_URL = "https://cdbr.ru/scripts/XML_daily.asp"
+API_URL = "https://cbr.ru/scripts/XML_daily.asp"
