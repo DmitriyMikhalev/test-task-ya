@@ -28,4 +28,4 @@ class CurrencyRequest(models.Model):
         verbose_name_plural = _("Запросы валютного курса")
 
     def __str__(self) -> str:
-        return f"1 {self.origin_currency} —> {self.target_currency}"
+        return f"1 {self.origin_currency} —> {self.rate} {self.target_currency}"
